@@ -15,4 +15,14 @@ class User < ApplicationRecord
   def jobs_completed
     jobs.unpaid.count
   end
+
+  def unpaid_job_value
+    @jobs_completed = jobs_completed
+    value = [@jobs_completed, target_jobs].min * pre_target_point_value
+    if @jobs_completed >= target_jobs
+      value += target_bonus  
+      value += (@jobs_completed - target_jobs) * post_target_point_value
+    end
+    value
+  end
 end

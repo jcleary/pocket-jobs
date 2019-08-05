@@ -10,7 +10,10 @@
               .progress
                 .progress-bar.progress-bar-striped{ role: "progressbar", style: "width: #{child.percent_completed}%"}
               %div
-                #{child.jobs_completed} out of #{child.target_jobs} 
+                .text-left
+                  #{child.jobs_completed} out of #{child.target_jobs} 
+                .text-right
+                  &pound;#{child.unpaid_job_value}
             - child.jobs.unpaid.each do |job|
               .list-group-item.d-flex.justify-content-between.align-items-center
                 = job.job_type.name
