@@ -8,9 +8,9 @@
 #
 john = User.create(name: 'John', child: false, email: 'john@example.com', password: '11111111')
 sally = User.create(name: 'Sally', child: false, email: 'sally@example.com', password: '11111111')
-jack = User.create(name: 'Jack', child: true, email: 'jack@example.com', password: '11111111', position: 1, target_jobs: 8)
-lucas = User.create(name: 'Lucas', child: true, email: 'lucas@example.com', password: '11111111', position: 2, target_jobs: 6)
-fleur = User.create(name: 'Fleur', child: true, email: 'fleur@example.com', password: '11111111', position: 3, target_jobs: 4)
+jack = User.create(name: 'Jack', child: true, email: 'jack@example.com', password: '11111111', position: 1, target_jobs: 8, pre_target_point_value: 1, target_bonus: 8, post_target_point_value: 1 )
+lucas = User.create(name: 'Lucas', child: true, email: 'lucas@example.com', password: '11111111', position: 2, target_jobs: 6, pre_target_point_value: 1, target_bonus: 3, post_target_point_value: 1 )
+fleur = User.create(name: 'Fleur', child: true, email: 'fleur@example.com', password: '11111111', position: 3, target_jobs: 4, pre_target_point_value: 1, target_bonus: 2, post_target_point_value: 1 )
 
 load_dw = JobType.create(name: 'Load dishwasher', value: 1)
 empty_dw = JobType.create(name: 'Empty dishwasher', value: 1)
