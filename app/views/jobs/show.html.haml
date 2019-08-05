@@ -1,0 +1,33 @@
+.container
+  .row
+    - User.children.each do |child|
+      .col-md-4
+        .card.mb-4.shadow-sm
+          .card-header
+            %h4.my-0.font-weight-normal=child.name
+          .list-group.list-group
+            .list-group-item
+              .progress
+                .progress-bar.progress-bar-striped{ role: "progressbar", style: "width: #{child.percent_completed}%"}
+              %div
+                ( 3 out of #{child.target_jobs} )
+            .list-group-item.d-flex.justify-content-between.align-items-center
+              Empty dishwaser
+              %span.badge.badge-primary.badge-pill 1
+            .list-group-item.d-flex.justify-content-between.align-items-center
+              Set table
+              %span.badge.badge-primary.badge-pill 3
+            .list-group-item
+              Add a job
+              %form
+                %select
+                  %option Please select
+                  %option Set table
+                  %option Empty dishwasher
+                  %option Recycling
+                  %option Load dishwasher
+
+
+
+
+

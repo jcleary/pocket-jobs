@@ -1,0 +1,2 @@
+class Payday < ApplicationRecord
+end
