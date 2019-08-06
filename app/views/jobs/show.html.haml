@@ -1,27 +1,11 @@
 .container
   .text-center
     .h2.mb-4.mt-3 Pocket Jobs
-  .row
+  .row{ style: 'height: 600px; border: 1px black' }
     - User.children.each do |child|
-      .col-md-4
+      .col-md-4.d-flex.flex-column.justify-content-between
         = render 'jobs_card', child: child 
-  .row
-    - User.children.each do |child|
-      .col-md-4
         .card.mb-4.shadow-sm
-          .list-group
-
-            .list-group-item
-              .progress
-                .progress-bar.progress-bar-striped{ role: "progressbar", style: "width: #{child.percent_completed}%"}
-            .list-group-item
-              .d-flex.justify-content-between
-                %div
-                  #{child.jobs_completed} / #{child.target_jobs} 
-                  &#61;
-                  %strong &pound;#{child.unpaid_job_value}
-                %div
-                  = form_for(@payday) do |f|
-                    = f.hidden_field :user_id, value: child.id
-                    %button.btn.btn-warning{ type: "submit" } Bank
+          = render 'add_a_job', child: child
+          = render 'progress_and_bank', child: child
 
