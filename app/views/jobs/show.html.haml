@@ -4,37 +4,24 @@
   .row
     - User.children.each do |child|
       .col-md-4
+        = render 'jobs_card', child: child 
+  .row
+    - User.children.each do |child|
+      .col-md-4
         .card.mb-4.shadow-sm
-          .card-header
-            %h4.my-0.font-weight-normal=child.name
-          .list-group.list-group
+          .list-group
+
             .list-group-item
               .progress
                 .progress-bar.progress-bar-striped{ role: "progressbar", style: "width: #{child.percent_completed}%"}
-              %div
-                %span.text-left
+            .list-group-item
+              .d-flex.justify-content-between
+                %div
                   #{child.jobs_completed} out of #{child.target_jobs} 
                   &#61;
                   %strong &pound;#{child.unpaid_job_value}
-            - child.jobs.unpaid.group(:job_type_id).count.each do |job_type_id, count|
-              .list-group-item.d-flex.justify-content-between.align-items-center
-                = JobType.find(job_type_id).name
-                %span.badge.badge-primary.badge-pill= count
-            .list-group-item
-              - @job = Job.new
-              = form_for(@job) do |f|
-                .form-group
-                  %label{ for: "job_type" }Add a job
-                  = f.collection_select :job_type_id, JobType.all, :id, :name, { include_blank: true }, { class: 'form-control' } 
-                  = f.hidden_field :user_id, value: child.id
-                  %br
-                  %button.btn.btn-primary{ type: "submit" }Submit
-                  - @payday = Payday.new
-              = form_for(@payday) do |f|
-                = f.hidden_field :user_id, value: child.id
-                %button.btn.btn-warning{ type: "submit" } Bank
-
-
-
-
+                %div
+                  = form_for(@payday) do |f|
+                    = f.hidden_field :user_id, value: child.id
+                    %button.btn.btn-warning{ type: "submit" } Bank
 
