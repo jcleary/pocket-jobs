@@ -1,4 +1,6 @@
 .container
+  .text-center
+    .h2.mb-4.mt-3 Pocket Jobs
   .row
     - User.children.each do |child|
       .col-md-4
@@ -23,10 +25,14 @@
               = form_for(@job) do |f|
                 .form-group
                   %label{ for: "job_type" }Add a job
-                  = f.collection_select :job_type_id, JobType.all, :id, :name, { }, { class: 'form-control' } 
+                  = f.collection_select :job_type_id, JobType.all, :id, :name, { include_blank: true }, { class: 'form-control' } 
                   = f.hidden_field :user_id, value: child.id
                   %br
                   %button.btn.btn-primary{ type: "submit" }Submit
+                  - @payday = Payday.new
+              = form_for(@payday) do |f|
+                = f.hidden_field :user_id, value: child.id
+                %button.btn.btn-warning{ type: "submit" } Bank
 
 
 

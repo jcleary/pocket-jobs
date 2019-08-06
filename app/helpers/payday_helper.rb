@@ -1,0 +1,2 @@
+module PaydayHelper
+end
