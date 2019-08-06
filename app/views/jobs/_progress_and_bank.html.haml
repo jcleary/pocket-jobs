@@ -1,15 +1,16 @@
 .list-group-item
-  .progress
+  .progress.mb-3
     .progress-bar.progress-bar-striped{ role: "progressbar", style: "width: #{child.percent_completed}%"}
 
-.list-group-item
   .d-flex.justify-content-between
     %div
       #{child.jobs_completed} / #{child.target_jobs} 
       &#61;
       %strong &pound;#{child.unpaid_job_value}
     %div
-      - @payday = Payday.new
-      = form_for(@payday) do |f|
+      = form_for(Payday.new) do |f|
         = f.hidden_field :user_id, value: child.id
         %button.btn.btn-warning{ type: "submit" } Bank
+  -# %div
+    Last payday: /date/ for &pound;x.y (cancel)
+
