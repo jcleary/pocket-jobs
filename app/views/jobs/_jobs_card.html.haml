@@ -5,4 +5,5 @@
     - child.jobs.unpaid.group(:job_type_id).count.each do |job_type_id, count|
       .list-group-item.d-flex.justify-content-between
         = JobType.find(job_type_id).name
-        %span.badge.badge-primary.badge-pill= count
+        %span
+          .badge.badge-primary.badge-pill= count
