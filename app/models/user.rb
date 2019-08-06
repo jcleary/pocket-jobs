@@ -13,7 +13,7 @@ class User < ApplicationRecord
   end
 
   def jobs_completed
-    jobs.unpaid.count
+    jobs.unpaid.sum {|j| j.job_type.value }
   end
 
   def unpaid_job_value

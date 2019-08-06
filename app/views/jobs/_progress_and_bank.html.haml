@@ -6,7 +6,7 @@
     %div
       #{child.jobs_completed} / #{child.target_jobs} 
       &#61;
-      %strong &pound;#{child.unpaid_job_value}
+      %strong &pound;#{child.unpaid_job_value / 100}
     %div
       = form_for(Payday.new) do |f|
         = f.hidden_field :user_id, value: child.id
