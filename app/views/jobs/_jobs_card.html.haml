@@ -1,9 +1,8 @@
-.card.mb-4.shadow-sm
-  .card-header
-    %h4.my-0.font-weight-normal=child.name
-  .list-group
-    - child.jobs.unpaid.group(:job_type_id).count.each do |job_type_id, count|
-      .list-group-item.d-flex.justify-content-between
-        = JobType.find(job_type_id).name
-        %span
-          .badge.badge-primary.badge-pill= count
+.card-header
+  %h4.my-0.font-weight-normal=child.name
+.list-group
+  - child.jobs.unpaid.group(:job_type_id).count.each do |job_type_id, count|
+    .list-group-item.d-flex.justify-content-between
+      = JobType.find(job_type_id).name
+      %span
+        .badge.badge-primary.badge-pill= count
