@@ -1,15 +1,17 @@
-.container
-  .text-center
-    .h2.mb-4.mt-3 Pocket Jobs
-  .row{ style: 'height: 600px; border: 1px black' }
-    - User.children.each do |child|
-      .col-lg-4.d-flex.flex-column.justify-content-between
-        .card.mb-4.shadow-sm.d-none.d-lg-block.d-xl-none
-          = render 'jobs_card', child: child 
-        .card.mb-4.shadow-sm
-          .d-lg-none.d-xl-block
-            = render 'jobs_card', child: child 
-          = render 'add_a_job', child: child
-          = render 'progress_and_bank', child: child
+.bg-light
+  .container-fluid
+    .row
+      .col-12
+        .text-center.h2 Pocker Jobs
+    .row
+      - User.children.each do |child|
+        .col-lg-4.col-md-12
+          .card.mb-4.shadow-sm
+            .card-header
+              %h4.my-0.font-weight-normal=child.name
+            .list-group
+              = render 'jobs', child: child 
+              = render 'add_a_job', child: child
+              = render 'progress_and_bank', child: child
 
 

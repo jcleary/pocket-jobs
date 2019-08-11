@@ -1,8 +1,8 @@
-.list-group-item.pb-0
+.list-group-item
   - @job = Job.new
   = form_for(@job) do |f|
-    .form-group
+    .input-group
       = f.collection_select :job_type_id, JobType.all.order(:value), :id, :name_with_value, { prompt: 'Select a job...' }, { class: 'form-control' } 
       = f.hidden_field :user_id, value: child.id
-      .text-right
-        %button.btn.btn-primary.mt-2{ type: "submit" }Add 
+      .input-group-append
+        %button.btn.btn-primary{ type: "submit" }Add 
