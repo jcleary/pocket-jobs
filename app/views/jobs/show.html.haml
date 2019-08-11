@@ -1,11 +1,11 @@
 .bg-light
-  .container-fluid
+  .container-fluid{ width: '491px' }
     .row
       .col-12
         .text-center.h2 Pocker Jobs
     .row
       - User.children.each do |child|
-        .col-lg-4.col-md-12
+        .col-md-4
           .card.mb-4.shadow-sm
             .card-header
               %h4.my-0.font-weight-normal=child.name
