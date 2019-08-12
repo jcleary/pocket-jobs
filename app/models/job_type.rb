@@ -1,5 +1,5 @@
 class JobType < ApplicationRecord
-  def name_with_value
-    "#{name} (#{value.floor})"
+  def name_with_points
+    "#{name} (#{points.floor})"
   end
 end

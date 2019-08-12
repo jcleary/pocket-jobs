@@ -62,9 +62,9 @@ job_types = {
   ]
 }
 
-job_types.each do |value, names|
+job_types.each do |points, names|
   names.each do |name|
-    JobType.create(name: name, value: value)
+    JobType.create(name: name, points: points)
   end
 end
 

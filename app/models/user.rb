@@ -14,7 +14,7 @@ class User < ApplicationRecord
   end
 
   def jobs_completed
-    jobs.unpaid.sum {|j| j.job_type.value }
+    jobs.unpaid.sum {|j| j.job_type.points }
   end
 
   def balance
@@ -23,11 +23,11 @@ class User < ApplicationRecord
 
   def next_payday_amount
     @jobs_completed = jobs_completed
-    value = [@jobs_completed, target_jobs].min * pre_target_point_value
+    amount = [@jobs_completed, target_jobs].min * pre_target_point_value
     if @jobs_completed >= target_jobs
-      value += target_bonus  
-      value += (@jobs_completed - target_jobs) * post_target_point_value
+      amount += target_bonus  
+      amount += (@jobs_completed - target_jobs) * post_target_point_value
     end
-    value
+    amount
   end
 end
