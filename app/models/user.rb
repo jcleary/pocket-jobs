@@ -21,7 +21,7 @@ class User < ApplicationRecord
     bank_items.sum(:amount)
   end
 
-  def unpaid_job_value
+  def next_payday_amount
     @jobs_completed = jobs_completed
     value = [@jobs_completed, target_jobs].min * pre_target_point_value
     if @jobs_completed >= target_jobs
