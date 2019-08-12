@@ -17,6 +17,10 @@ class User < ApplicationRecord
     jobs.unpaid.sum {|j| j.job_type.value }
   end
 
+  def balance
+    bank_items.sum(:amount)
+  end
+
   def unpaid_job_value
     @jobs_completed = jobs_completed
     value = [@jobs_completed, target_jobs].min * pre_target_point_value
