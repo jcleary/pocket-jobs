@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_12_072904) do
+ActiveRecord::Schema.define(version: 2019_08_12_074435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2019_08_12_072904) do
     t.boolean "child"
     t.string "name"
     t.integer "position"
-    t.integer "target_jobs"
+    t.integer "target_points"
     t.integer "pre_target_point_value"
     t.integer "target_bonus"
     t.integer "post_target_point_value"

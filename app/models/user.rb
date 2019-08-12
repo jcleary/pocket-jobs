@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :bank_items
 
   def percent_completed
-    ((jobs_completed.to_f / target_jobs) * 100).ceil
+    ((jobs_completed.to_f / target_points) * 100).ceil
   end
 
   def jobs_completed
@@ -23,10 +23,10 @@ class User < ApplicationRecord
 
   def next_payday_amount
     @jobs_completed = jobs_completed
-    amount = [@jobs_completed, target_jobs].min * pre_target_point_value
-    if @jobs_completed >= target_jobs
+    amount = [@jobs_completed, target_points].min * pre_target_point_value
+    if @jobs_completed >= target_points
       amount += target_bonus  
-      amount += (@jobs_completed - target_jobs) * post_target_point_value
+      amount += (@jobs_completed - target_points) * post_target_point_value
     end
     amount
   end
