@@ -1,17 +1,14 @@
 class PaydaysController < ApplicationController
   def create
-    payday = Payday.find_or_create_by(date: Date.today)
-    p payday
+    Payday.transaction do
+      user = User.find(params[:payday][:user_id])
 
-    # where might be a better home for this?
-    user_id = params[:payday][:user_id]
-    User.find(user_id).jobs.unpaid.update_all(payday_id: payday.id)
+      bank_item = BankItem.create(user: user, amount: user.unpaid_job_value)
+      payday = Payday.create(user: user, bank_item: bank_item)
+
+      user.jobs.unpaid.update_all(payday_id: payday.id)
+    end
+
     redirect_to jobs_path
-  end
-
-  private
-
-  def payday_params
-    params.require(:payday).permit(:user_id)
   end
 end
