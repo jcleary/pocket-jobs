@@ -8,6 +8,6 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = render 'shared/logged_in_nav' if signed_in?
+    = render signed_in? ? 'shared/logged_in_nav' : 'shared/logged_out_nav'
     .bg-light
       = yield
