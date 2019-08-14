@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  authenticate :user do
-    resources :jobs, only: [ :index, :create ]
-    resource :paydays, only: :create
-    get 'profile', action: :show, controller: 'profiles'
+ 
+  devise_scope :user do
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+
+    authenticate :user do
+      root 'jobs#index', as: :authenticated_root
+      resources :jobs, only: [ :index, :create ]
+      resource :paydays, only: :create
+      get 'profile', action: :show, controller: 'profiles'
+    end
   end
 end
