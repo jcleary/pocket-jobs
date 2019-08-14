@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :jobs, only: [ :index, :create ]
     resource :paydays, only: :create
+    get 'profile', action: :show, controller: 'profiles'
   end
 end
