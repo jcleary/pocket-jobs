@@ -4,7 +4,7 @@ class JobsController < ApplicationController
 
   def create
     Job.create!(job_params)
-    redirect_to action: :show
+    redirect_to action: :index
   end
 
   private
