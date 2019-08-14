@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :jobs, only: [ :index, :create ]
       resource :paydays, only: :create
       get 'profile', action: :show, controller: 'profiles'
+      get 'profiles', action: :index, controller: 'profiles'
     end
   end
 end

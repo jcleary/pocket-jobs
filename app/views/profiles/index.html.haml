@@ -1,0 +1,17 @@
+.container
+  .row
+    .offset-md-3.col-6
+      %table.table
+        %thead
+          %tr
+            %th{ scope: 'col' }Name
+            %th{ scope: 'col' }Balance
+            %th{ scope: 'col' }Actions
+        %tbody
+          - User.children.each do |child|
+            %tr
+              %td=child.name
+              %td=child.balance.to_f / 100
+              %td
+                .btn.btn-success Add 
+                .btn.btn-warning Remove 
