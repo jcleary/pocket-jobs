@@ -3,8 +3,6 @@ class JobsController < ApplicationController
   end
 
   def create
-    p params
-    p job_params
     Job.create!(job_params)
     redirect_to action: :show
   end
