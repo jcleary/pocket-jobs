@@ -1,8 +1,8 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
   %a.navbar-brand{:href => "#"} Pocket Jobs
-  %button.navbar-toggler{"aria-controls" => "navbarsExample05", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExample05", "data-toggle" => "collapse", :type => "button"}
+  %button.navbar-toggler{ aria: { controls: "navbar", expanded: "false", aria: "Toggle navigation"},  data: { target: "#navbar", toggle: "collapse"} , type: "button"}
     %span.navbar-toggler-icon
-  #navbarsExample05.collapse.navbar-collapse
+  #navbar.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
       %li.nav-item
         %a.nav-link{ href: jobs_path }
