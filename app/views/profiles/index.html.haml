@@ -5,13 +5,18 @@
         %thead
           %tr
             %th{ scope: 'col' }Name
-            %th{ scope: 'col' }Balance
+            %th.text-right{ scope: 'col' }Balance
             %th{ scope: 'col' }Actions
         %tbody
           - User.children.each do |child|
             %tr
               %td=child.name
-              %td=child.balance.to_f / 100
-              %td
-                .btn.btn-success Add 
-                .btn.btn-warning Remove 
+              %td.text-right=number_to_currency(child.balance.to_f / 100)
+              %td.d-flex
+                .dropdown
+                  %button.btn.btn-outline-primary.btn-sm.dropdown-toggle#dropdownMenuButton{ type: 'button', 'data-toggle': 'dropdown', 'aria-haspopup': "true", 'aria-expanded': "false" }
+                    Money
+                  .dropdown-menu{ "aria-labelledby": "dropdownMenuButton"}
+                    %a.dropdown-item Add
+                    %a.dropdown-item Remove
+                .btn.btn-outline-primary.btn-sm.ml-1 Jobs

@@ -1,0 +1,22 @@
+.container
+  .row
+    .offset-md-3.col-6
+      %table.table
+        %thead
+          %tr
+            %th{ scope: 'col' }Date
+            %th{ scope: 'col' }Description
+            %th.text-right{ scope: 'col' }Money In
+            %th.text-right{ scope: 'col' }Money Out
+        %tbody
+          -current_user.bank_items.each do |item|
+            %tr
+              %td=l(item.created_at, format: :short)
+              %td=#item.description
+              %td.text-right=item.amount > 0 ? number_to_currency(item.amount.to_f / 100) : ''
+              %td.text-right=item.amount < 0 ? number_to_currency(item.acount.to_f / -100) : ''
+          %tr.table-info
+            %td{ colspan: '4' }
+              .text-center
+                Balance
+                = number_to_currency(current_user.balance.to_f / 100)

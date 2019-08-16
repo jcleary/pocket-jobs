@@ -4,12 +4,14 @@
     %span.navbar-toggler-icon
   #navbar.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
-      %li.nav-item
-        %a.nav-link{ href: jobs_path }
-          Dashboard
-      %li.nav-item
-        -if current_user.child?
-          %a.nav-link{:href => profile_path } Profile
-        -else
+      -if current_user.child?
+        %li.nav-item
+          %a.nav-link{:href => profile_jobs_path } Jobs
+        %li.nav-item
+          %a.nav-link{:href => profile_bank_items_path } Bank
+      -else
+        %li.nav-item
           %a.nav-link{:href => profiles_path } Profiles
+        %li.nav-item
+          %a.nav-link{ href: jobs_path } Dashboard
     %a.btn.btn-info{ href: destroy_user_session_path } Sign out
