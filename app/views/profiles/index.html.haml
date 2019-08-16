@@ -19,4 +19,6 @@
                   .dropdown-menu{ "aria-labelledby": "dropdownMenuButton"}
                     %a.dropdown-item Add
                     %a.dropdown-item Remove
-                .btn.btn-outline-primary.btn-sm.ml-1 Jobs
+                    .dropdown-divider
+                    %a.dropdown-item Transactions
+                = link_to 'Jobs', "users/#{child.id}/jobs", class: 'btn btn-sm btn-outline-primary ml-1'

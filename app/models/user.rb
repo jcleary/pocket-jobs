@@ -21,6 +21,14 @@ class User < ApplicationRecord
     bank_items.sum(:amount)
   end
 
+  def homepage_path
+    if child?
+      Rails.application.routes.url_helpers.user_jobs_path(self)
+    else
+      Rails.application.routes.url_helpers.profiles_path
+    end
+  end
+
   def next_payday_amount
     @jobs_completed = jobs_completed
     amount = [@jobs_completed, target_points].min * pre_target_point_value

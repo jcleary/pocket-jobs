@@ -6,7 +6,7 @@
     %ul.navbar-nav.mr-auto
       -if current_user.child?
         %li.nav-item
-          %a.nav-link{:href => profile_jobs_path } Jobs
+          %a.nav-link{:href => user_jobs_path(current_user) } Jobs
         %li.nav-item
           %a.nav-link{:href => profile_bank_items_path } Bank
       -else

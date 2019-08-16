@@ -1,13 +1,22 @@
 .container-fluid.mt-3
   .row
-    - User.children.each do |child|
-      .col-md-4
+    - if defined? @child
+      .col-md-6.offset-md-3
         .card.mb-4.shadow-sm
-          .card-header
-            %h4.my-0.font-weight-normal=child.name
+          - child = current_user
           .list-group
-            = render 'jobs', child: child 
-            = render 'add_a_job', child: child
-            = render 'progress_and_bank', child: child
+            = render 'jobs/jobs', child: @child 
+            = render 'jobs/add_a_job', child: @child
+            = render 'jobs/progress_and_bank', child: @child
+    -else
+      - @children.each do |child|
+        .col-md-4
+          .card.mb-4.shadow-sm
+            .card-header
+              %h4.my-0.font-weight-normal=child.name
+            .list-group
+              = render 'jobs', child: child 
+              = render 'add_a_job', child: child
+              = render 'progress_and_bank', child: child
 
 

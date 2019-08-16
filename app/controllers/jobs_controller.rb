@@ -1,5 +1,10 @@
 class JobsController < ApplicationController
   def index
+    if params[:user_id]
+      @child = User.children.find(params[:user_id])   
+    else 
+      @children = User.children
+    end
   end
 
   def create
@@ -12,10 +17,4 @@ class JobsController < ApplicationController
   def job_params
     params.require(:job).permit(:job_type_id, :user_id)
   end
-
-
-  
- 
-
-
 end

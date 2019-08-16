@@ -13,7 +13,10 @@ Rails.application.routes.draw do
       get 'profile', action: :show, controller: 'profiles'
       get 'profiles', action: :index, controller: 'profiles'
 
-      get 'profile/jobs', action: :jobs, controller: 'profiles'
+      resources :users do
+        resources :jobs, only: :index
+      end
+
       get 'profile/bank_items', action: :bank_items, controller: 'profiles'
     end
   end

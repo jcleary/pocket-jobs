@@ -1,9 +1,0 @@
-.container
-  .row
-    .col-md-6.offset-md-3
-      .card.mb-4.mt-3.shadow-sm
-        - child = current_user
-        .list-group
-          = render 'jobs/jobs', child: child 
-          = render 'jobs/add_a_job', child: child
-          = render 'jobs/progress_and_bank', child: child
