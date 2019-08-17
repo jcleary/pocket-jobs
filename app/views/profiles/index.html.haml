@@ -20,5 +20,5 @@
                     %a.dropdown-item Add
                     %a.dropdown-item Remove
                     .dropdown-divider
-                    %a.dropdown-item Transactions
-                = link_to 'Jobs', "users/#{child.id}/jobs", class: 'btn btn-sm btn-outline-primary ml-1'
+                    = link_to 'Transactions', user_bank_items_path(child), class: 'dropdown-item'
+                = link_to 'Jobs', user_jobs_path(child), class: 'btn btn-sm btn-outline-primary ml-1'

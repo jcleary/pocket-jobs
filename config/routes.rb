@@ -15,9 +15,8 @@ Rails.application.routes.draw do
 
       resources :users do
         resources :jobs, only: :index
+        resources :bank_items, only: :index
       end
-
-      get 'profile/bank_items', action: :bank_items, controller: 'profiles'
     end
   end
 end

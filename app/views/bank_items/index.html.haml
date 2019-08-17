@@ -9,7 +9,7 @@
             %th.text-right{ scope: 'col' }Money In
             %th.text-right{ scope: 'col' }Money Out
         %tbody
-          -current_user.bank_items.each do |item|
+          -@user.bank_items.each do |item|
             %tr
               %td=l(item.created_at, format: :short)
               %td=item.description

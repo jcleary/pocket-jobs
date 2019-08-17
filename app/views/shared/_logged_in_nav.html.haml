@@ -8,7 +8,7 @@
         %li.nav-item
           %a.nav-link{:href => user_jobs_path(current_user) } Jobs
         %li.nav-item
-          %a.nav-link{:href => profile_bank_items_path } Bank
+          %a.nav-link{:href => user_bank_items_path(current_user) } Bank
       -else
         %li.nav-item
           %a.nav-link{:href => profiles_path } Profiles
