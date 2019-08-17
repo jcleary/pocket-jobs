@@ -7,10 +7,9 @@
       #{child.jobs_completed} / #{child.target_points} 
       &#61;
       %strong &pound;#{child.next_payday_amount / 100}
-    %div
-      = form_for(Payday.new) do |f|
-        = f.hidden_field :user_id, value: child.id
-        %button.btn.btn-warning{ type: "submit" } Bank
-  -# %div
-    Last payday: /date/ for &pound;x.y (cancel)
+    - unless current_user.child?
+      %div
+        = form_for(Payday.new) do |f|
+          = f.hidden_field :user_id, value: child.id
+          %button.btn.btn-warning{ type: "submit" } Bank
 
