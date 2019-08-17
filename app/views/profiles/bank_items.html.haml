@@ -12,7 +12,7 @@
           -current_user.bank_items.each do |item|
             %tr
               %td=l(item.created_at, format: :short)
-              %td=#item.description
+              %td=item.description
               %td.text-right=item.amount > 0 ? number_to_currency(item.amount.to_f / 100) : ''
               %td.text-right=item.amount < 0 ? number_to_currency(item.acount.to_f / -100) : ''
           %tr.table-info
