@@ -10,12 +10,11 @@ Rails.application.routes.draw do
       root 'jobs#index', as: :authenticated_root
       resources :jobs, only: [ :index, :create ]
       resource :paydays, only: :create
-      get 'profile', action: :show, controller: 'profiles'
       get 'profiles', action: :index, controller: 'profiles'
 
       resources :users do
         resources :jobs, only: :index
-        resources :bank_items, only: :index
+        resources :bank_items, only: [ :index, :new, :create ]
       end
     end
   end
