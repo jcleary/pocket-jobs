@@ -3,10 +3,11 @@
     - if defined? @child
       .col-md-6.offset-md-3
         .card.mb-4.shadow-sm
-          .card-header
-            %h4.my-0.font-weight-normal
-              %i.fas.fa-broom
+          .card-header.d-flex.justify-content-between
+            %h4.my-0
               =@child.name
+            %h4.my-0
+              %i.fas.fa-broom
           .list-group
             = render 'jobs/jobs', child: @child 
             = render 'jobs/add_a_job', child: @child
