@@ -7,7 +7,7 @@ class User < ApplicationRecord
   scope :children, -> { where(child: true) }
 
   has_many :jobs
-  has_many :bank_items
+  has_many :bank_items, -> { order(created_at: :desc) }
 
   def percent_completed
     ((jobs_completed.to_f / target_points) * 100).ceil
