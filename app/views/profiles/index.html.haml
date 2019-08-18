@@ -1,12 +1,12 @@
 .container.mt-3
   .row
     .col-md-6.offset-md-3
-      .card.mb-4.shadow-sm
+      .card.shadow-sm
         .card-header
           %h4.my-0.font-weight-normal Profiles
-        .card-body
-          %table.table
-            %thead
+        .card-body.px-2
+          %table.table.mb-0
+            %thead.thead-light
               %tr
                 %th{ scope: 'col' }Name
                 %th.text-right{ scope: 'col' }Balance
@@ -16,13 +16,14 @@
                 %tr
                   %td=child.name
                   %td.text-right=number_to_currency(child.balance.to_f / 100)
-                  %td.d-flex
-                    .dropdown
-                      %button.btn.btn-outline-primary.btn-sm.dropdown-toggle#dropdownMenuButton{ type: 'button', 'data-toggle': 'dropdown', 'aria-haspopup': "true", 'aria-expanded': "false" }
-                        Money
-                      .dropdown-menu{ "aria-labelledby": "dropdownMenuButton"}
-                        = link_to 'Add', new_user_bank_item_path(child, 'direction' => '1'), class: 'dropdown-item'
-                        = link_to 'Remove', new_user_bank_item_path(child, 'direction' => '-1'), class: 'dropdown-item'
-                        .dropdown-divider
-                        = link_to 'Transactions', user_bank_items_path(child), class: 'dropdown-item'
-                    = link_to 'Jobs', user_jobs_path(child), class: 'btn btn-sm btn-outline-primary ml-1'
+                  %td
+                    .d-flex
+                      .dropdown
+                        %button.btn.btn-outline-primary.btn-sm.dropdown-toggle#dropdownMenuButton{ type: 'button', 'data-toggle': 'dropdown', 'aria-haspopup': "true", 'aria-expanded': "false" }
+                          Money
+                        .dropdown-menu{ "aria-labelledby": "dropdownMenuButton"}
+                          = link_to 'Add', new_user_bank_item_path(child, 'direction' => '1'), class: 'dropdown-item'
+                          = link_to 'Remove', new_user_bank_item_path(child, 'direction' => '-1'), class: 'dropdown-item'
+                          .dropdown-divider
+                          = link_to 'Transactions', user_bank_items_path(child), class: 'dropdown-item'
+                      = link_to 'Jobs', user_jobs_path(child), class: 'btn btn-sm btn-outline-primary ml-1'
