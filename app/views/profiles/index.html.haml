@@ -12,7 +12,7 @@
                 %th.text-right{ scope: 'col' }Balance
                 %th{ scope: 'col' }Actions
             %tbody
-              - User.children.each do |child|
+              - @children.each do |child|
                 %tr
                   %td=child.name
                   %td.text-right=number_to_currency(child.balance.to_f / 100)
