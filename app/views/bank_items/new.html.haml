@@ -2,8 +2,9 @@
   .row
     .col-md-6.offset-md-3
       .card.mb-4.shadow-sm
+        .card-header
+          %h4.my-0.font-weight-normal= @direction == '-1' ? 'Remove Money' : 'Add Money'
         .card-body
-          %h3= @direction == '-1' ? 'Remove Money' : 'Add Money'
           =form_for([@user, @bank_item]) do |f|
             .form-group
               %lable{ for: 'user_name' }= @direction == '-1' ? 'From Account' : 'To Account'
