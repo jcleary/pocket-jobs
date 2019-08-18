@@ -6,8 +6,11 @@
           .card-header.d-flex.justify-content-between
             %h4.my-0
               =@child.name
-            %h4.my-0
-              %i.fas.fa-broom
+            .btn-group
+              %a.btn.btn-outline-primary{ href: user_bank_items_path(@child) }
+                %i.fas.fa-coins
+              .btn.btn-outline-primary.active
+                %i.fas.fa-broom
           .list-group
             = render 'jobs/jobs', child: @child 
             = render 'jobs/add_a_job', child: @child
