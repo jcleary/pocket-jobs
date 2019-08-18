@@ -19,4 +19,4 @@
             %td{ colspan: '4' }
               .text-center
                 Balance
-                = number_to_currency(current_user.balance.to_f / 100)
+                = number_to_currency(@user.balance.to_f / 100)
