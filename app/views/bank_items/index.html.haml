@@ -3,7 +3,9 @@
     .offset-md-3.col-md-6
       .card.shadow-sm
         .card-header
-          %h4.my-0.font-weight-normal Bank: #{@user.name}
+          %h4.my-0.font-weight-normal
+            %i.fas.fa-coins
+            #{@user.name}
         .card-body
           %table.table.bank-items
             %thead

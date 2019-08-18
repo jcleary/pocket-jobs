@@ -3,7 +3,10 @@
     - if defined? @child
       .col-md-6.offset-md-3
         .card.mb-4.shadow-sm
-          - child = current_user
+          .card-header
+            %h4.my-0.font-weight-normal
+              %i.fas.fa-broom
+              =@child.name
           .list-group
             = render 'jobs/jobs', child: @child 
             = render 'jobs/add_a_job', child: @child
@@ -13,7 +16,7 @@
         .col-md-4
           .card.mb-4.shadow-sm
             .card-header
-              %h4.my-0.font-weight-normal=child.name
+              %h4.my-0.font-weight-normal= child.name
             .list-group
               = render 'jobs', child: child 
               = render 'add_a_job', child: child
