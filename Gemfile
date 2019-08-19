@@ -12,6 +12,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'haml', '~> 5.1', '>= 5.1.1'
 gem 'devise', '~> 4.2'
 gem 'kaminari'
+gem "serviceworker-rails"
 
 gem 'bootstrap', '~> 4.3.1'
 gem 'coffee-rails', '~> 4.2'

@@ -1,0 +1,17 @@
+<% icon_sizes = Rails.configuration.serviceworker.icon_sizes %>
+{
+  "name": "My Progressive Rails App",
+  "short_name": "Progressive",
+  "start_url": "/users/sign_in",
+  "icons": [
+    {
+      "src": "<%= image_path "money.png" %>",
+      "sized": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#FFFFFF",
+  "display": "fullscreen",
+  "orientation": "portrait"
+}

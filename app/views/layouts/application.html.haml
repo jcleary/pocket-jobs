@@ -8,6 +8,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'https://kit.fontawesome.com/2231f844b5.js'
+    %link{ rel: 'manifest', href: '/manifest.json' }
   %body.bg-light
     = render signed_in? ? 'shared/logged_in_nav' : 'shared/logged_out_nav'
     = yield
