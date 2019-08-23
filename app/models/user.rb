@@ -25,7 +25,7 @@ class User < ApplicationRecord
     if child?
       Rails.application.routes.url_helpers.user_jobs_path(self)
     else
-      Rails.application.routes.url_helpers.profiles_path
+      Rails.application.routes.url_helpers.users_path
     end
   end
 

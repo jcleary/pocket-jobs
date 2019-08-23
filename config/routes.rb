@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
- 
-  devise_scope :user do
-    unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
-    end
 
+  root 'root#show' 
+
+  devise_scope :user do
     authenticate :user do
-      root 'jobs#index', as: :authenticated_root
       resources :jobs, only: [ :index, :create ]
       resource :paydays, only: :create
       get 'profiles', action: :index, controller: 'profiles'
