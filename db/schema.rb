@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_142814) do
+ActiveRecord::Schema.define(version: 2019_08_23_130032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_142814) do
     t.bigint "user_id"
     t.bigint "bank_item_id"
     t.integer "amount"
+    t.integer "target_points"
     t.index ["bank_item_id"], name: "index_paydays_on_bank_item_id"
     t.index ["user_id"], name: "index_paydays_on_user_id"
   end
