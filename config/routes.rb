@@ -7,9 +7,7 @@ Rails.application.routes.draw do
     authenticate :user do
       resources :jobs, only: [ :index, :create ]
       resource :paydays, only: :create
-      get 'profiles', action: :index, controller: 'profiles'
-
-      resources :users do
+      resources :users, only: :index do
         resources :jobs, only: :index
         resources :bank_items, only: [ :index, :new, :create ]
       end
