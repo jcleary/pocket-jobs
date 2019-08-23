@@ -9,6 +9,8 @@
           %a.nav-link{:href => user_jobs_path(current_user) } Jobs
         %li.nav-item
           %a.nav-link{:href => user_bank_items_path(current_user) } Bank
+        %li.nav-item
+          %a.nav-link{:href => user_payment_schedule_path(current_user) } Targets &amp; Values
       -else
         %li.nav-item
           %a.nav-link{:href => users_path } Profiles

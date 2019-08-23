@@ -1,0 +1,48 @@
+.container-fluid.mt-3
+  .row
+    .offset-md-3.col-md-6
+      .card.shadow-sm
+        .card-header
+          %h4.my-1
+            Targets &amp; Values
+        .card-body.p-0
+          %table.table.mb-0
+            %thead.thead-dark
+              %tr.bank-items
+                %th Target Points
+                %td
+                  =@user.next_payday.target_points
+                  -if @user.target_points != @user.next_payday.target_points
+                    (normally #{@user.target_points})
+              %tr.bank-items
+                %th Target Bonus
+                %td
+                  =number_to_currency(@user.target_bonus.to_f / 100)
+                  (#{number_to_currency((@user.pre_target_point_value * @user.next_payday.target_points + @user.target_bonus).to_f / 100)} inc jobs)
+              %tr.bank-items
+                %th Pre-target Points Value
+                %td=number_to_currency(@user.pre_target_point_value.to_f / 100)
+              %tr.bank-items
+                %th Post-target Points Value
+                %td=number_to_currency(@user.post_target_point_value.to_f / 100)
+  .row.mt-3
+    .offset-md-3.col-md-6
+      .card.shadow-sm
+        .card-header
+          %h4.my-1
+            Job Types 
+        .card-body.p-0
+          %table.table.mb-0
+            %thead.thead-dark
+              %tr.bank-items
+                %th{ scope: 'col' }Job Type
+                %th{ scope: 'col' }Points
+                %th.text-right{ scope: 'col' }Before target value
+                %th.text-right{ scope: 'col' }After target value
+            %tbody
+              -@job_types.each do |job_type|
+                %tr.bank-items
+                  %td=job_type.name
+                  %td=job_type.points.floor
+                  %td.text-right=number_to_currency(job_type.points * 0.14) 
+                  %td.text-right=number_to_currency(job_type.points * 0.17) 
