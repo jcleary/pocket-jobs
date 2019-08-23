@@ -15,9 +15,9 @@ User.create(
   password: '11111111', 
   position: 1, 
   target_jobs: 48, 
-  pre_target_point_value: 14, 
-  target_bonus: 800, 
-  post_target_point_value: 17
+  pre_target_point_value: 16, 
+  target_bonus: 832, 
+  post_target_point_value: 18
 )
 User.create(
   name: 'Lucas', 
@@ -26,9 +26,9 @@ User.create(
   password: '11111111', 
   position: 2, 
   target_jobs: 36, 
-  pre_target_point_value: 14, 
-  target_bonus: 300, 
-  post_target_point_value: 17
+  pre_target_point_value: 16, 
+  target_bonus: 324, 
+  post_target_point_value: 18
 )
 User.create(
   name: 'Fleur', 
@@ -37,9 +37,9 @@ User.create(
   password: '11111111', 
   position: 3, 
   target_jobs: 24, 
-  pre_target_point_value: 14, 
-  target_bonus: 200, 
-  post_target_point_value: 17
+  pre_target_point_value: 16, 
+  target_bonus: 216, 
+  post_target_point_value: 18
 )
 
 job_types = {
