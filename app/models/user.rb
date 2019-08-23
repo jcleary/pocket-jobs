@@ -8,9 +8,10 @@ class User < ApplicationRecord
 
   has_many :jobs
   has_many :bank_items, -> { order(created_at: :desc) }
+  has_many :paydays
 
   def percent_completed
-    ((jobs_completed.to_f / target_points) * 100).ceil
+    ((jobs_completed.to_f / next_payday.target_points) * 100).ceil
   end
 
   def jobs_completed
@@ -29,12 +30,29 @@ class User < ApplicationRecord
     end
   end
 
+  def next_payday
+    @next_payday ||= 
+      paydays.where(bank_item_id: nil).first || 
+      paydays.create(target_points: target_points)
+  end
+
+  def bank_points
+    User.transaction do
+      amount = next_payday_amount
+      bank_item = bank_items.create(amount: amount, description: "Banked #{jobs_completed.floor} points")
+      next_payday.update(bank_item: bank_item, amount: amount)
+
+      jobs.unpaid.update_all(payday_id: next_payday.id)
+      @next_payday = nil
+    end
+  end
+
   def next_payday_amount
     @jobs_completed = jobs_completed
-    amount = [@jobs_completed, target_points].min * pre_target_point_value
-    if @jobs_completed >= target_points
+    amount = [@jobs_completed, next_payday.target_points].min * pre_target_point_value
+    if @jobs_completed >= next_payday.target_points
       amount += target_bonus  
-      amount += (@jobs_completed - target_points) * post_target_point_value
+      amount += (@jobs_completed - next_payday.target_points) * post_target_point_value
     end
     amount
   end

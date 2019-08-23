@@ -4,7 +4,7 @@
 
   .d-flex.justify-content-between
     %div
-      #{child.jobs_completed.floor} / #{child.target_points} 
+      #{child.jobs_completed.floor} / #{child.next_payday.target_points} 
       &#61;
       %strong= number_to_currency(child.next_payday_amount / 100)
     - unless current_user.child?
