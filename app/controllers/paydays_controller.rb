@@ -9,6 +9,6 @@ class PaydaysController < ApplicationController
       user.jobs.unpaid.update_all(payday_id: payday.id)
     end
 
-    redirect_to jobs_path
+    redirect_to user_bank_items_path(user)
   end
 end
