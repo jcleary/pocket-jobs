@@ -14,7 +14,7 @@ User.create(
   email: 'jack@example.com', 
   password: '11111111', 
   position: 1, 
-  target_jobs: 48, 
+  target_points: 48, 
   pre_target_point_value: 16, 
   target_bonus: 832, 
   post_target_point_value: 18
@@ -25,7 +25,7 @@ User.create(
   email: 'lucas@example.com', 
   password: '11111111', 
   position: 2, 
-  target_jobs: 36, 
+  target_points: 36, 
   pre_target_point_value: 16, 
   target_bonus: 324, 
   post_target_point_value: 18
@@ -36,7 +36,7 @@ User.create(
   email: 'fleur@example.com', 
   password: '11111111', 
   position: 3, 
-  target_jobs: 24, 
+  target_points: 24, 
   pre_target_point_value: 16, 
   target_bonus: 216, 
   post_target_point_value: 18
