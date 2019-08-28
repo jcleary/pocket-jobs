@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #
-john = User.create(name: 'John', child: false, email: 'john@example.com', password: '11111111')
-sally = User.create(name: 'Sally', child: false, email: 'sally@example.com', password: '11111111')
+john = User.create(name: 'John', role: 'parent',  email: 'john@example.com', password: '11111111')
+sally = User.create(name: 'Sally', role: 'parent', email: 'sally@example.com', password: '11111111')
 User.create(
   name: 'Jack', 
-  child: true, 
+  role: 'child', 
   email: 'jack@example.com', 
   password: '11111111', 
   position: 1, 
@@ -21,7 +21,7 @@ User.create(
 )
 User.create(
   name: 'Lucas', 
-  child: true, 
+  role: 'child', 
   email: 'lucas@example.com', 
   password: '11111111', 
   position: 2, 
@@ -32,7 +32,7 @@ User.create(
 )
 User.create(
   name: 'Fleur', 
-  child: true, 
+  role: 'child', 
   email: 'fleur@example.com', 
   password: '11111111', 
   position: 3, 
@@ -40,6 +40,12 @@ User.create(
   pre_target_point_value: 16, 
   target_bonus: 216, 
   post_target_point_value: 18
+)
+User.create(
+  name: 'Dash', 
+  role: 'dashboard', 
+  email: 'dashboard@example.com', 
+  password: '11111111'
 )
 
 job_types = {
