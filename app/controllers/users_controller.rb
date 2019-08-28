@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource :user
+
   def index
-    @children = User.children.order(:position)
+    @children = @users.children.order(:position)
   end
 end

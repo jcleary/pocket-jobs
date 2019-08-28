@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  scope :children, -> { where(child: true) }
+  scope :children, -> { where(role: 'child') }
 
   has_many :jobs
   has_many :bank_items, -> { order(created_at: :desc) }
@@ -23,10 +23,13 @@ class User < ApplicationRecord
   end
 
   def homepage_path
-    if child?
+    case role
+    when 'child'
       Rails.application.routes.url_helpers.user_jobs_path(self)
-    else
+    when 'parent'
       Rails.application.routes.url_helpers.users_path
+    when 'dashboard'
+      Rails.application.routes.url_helpers.jobs_path
     end
   end
 

@@ -7,7 +7,7 @@
       #{child.jobs_completed.floor} / #{child.next_payday.target_points} 
       &#61;
       %strong= number_to_currency(child.next_payday_amount / 100)
-    - unless current_user.child?
+    - if can? :create, Payday
       %div
         = form_for(Payday.new) do |f|
           = f.hidden_field :user_id, value: child.id

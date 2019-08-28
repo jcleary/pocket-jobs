@@ -1,11 +1,12 @@
 class BankItemsController < ApplicationController
+  load_and_authorize_resource :user
+  load_and_authorize_resource through: :user
+
   def index
-    @user = User.find(params[:user_id])
-    @bank_items = @user.bank_items.page(params[:page]).per(7)
+    @bank_items = @bank_items.page(params[:page]).per(7)
   end
 
   def new
-    @user = User.find(params[:user_id])
     @bank_item = BankItem.new(user: @user)
     @direction = params[:direction]
   end

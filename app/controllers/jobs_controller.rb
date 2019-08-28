@@ -1,6 +1,8 @@
 class JobsController < ApplicationController
+  load_and_authorize_resource :user
+
   def index
-    if params[:user_id]
+    if @user.present?
       @child = User.children.find(params[:user_id])   
     else 
       @children = User.children
