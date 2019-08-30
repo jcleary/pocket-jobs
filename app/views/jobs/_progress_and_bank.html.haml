@@ -9,7 +9,6 @@
       %strong= number_to_currency(child.next_payday_amount / 100)
     - if can? :create, Payday
       %div
-        = form_for(Payday.new) do |f|
-          = f.hidden_field :user_id, value: child.id
-          %button.btn.btn-warning{ type: "submit" } Bank
+        = form_for([child, Payday.new]) do |f|
+          %button.btn.btn-warning{ type: "submit", data: { confirm: 'Are you sure you want to bank these items?' } } Bank
 

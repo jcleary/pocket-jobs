@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     authenticate :user do
       resources :jobs, only: [ :index, :create ]
-      resource :paydays, only: :create
       resources :users, only: :index do
+        resource :paydays, only: :create
         resources :jobs, only: :index
         resources :bank_items, only: [ :index, :new, :create ]
         get 'payment_schedule', to: 'payment_schedule#show'
