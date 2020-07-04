@@ -48,6 +48,7 @@ class User < ApplicationRecord
       next_payday.update(bank_item: bank_item, amount: amount)
 
       jobs.unpaid.update_all(payday_id: next_payday.id)
+      next_payday.send_summary
       @next_payday = nil
     end
   end
@@ -56,7 +57,7 @@ class User < ApplicationRecord
     @jobs_completed = jobs_completed
     amount = [@jobs_completed, next_payday.target_points].min * pre_target_point_value
     if @jobs_completed >= next_payday.target_points
-      amount += target_bonus  
+      amount += target_bonus
       amount += (@jobs_completed - next_payday.target_points) * post_target_point_value
     end
     amount
