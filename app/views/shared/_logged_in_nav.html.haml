@@ -6,14 +6,25 @@
     %ul.navbar-nav.mr-auto
       -if current_user.role == 'child'
         %li.nav-item
-          %a.nav-link{:href => user_jobs_path(current_user) } Jobs
+          %a.nav-link {href: user_jobs_path(current_user) } Jobs
         %li.nav-item
-          %a.nav-link{:href => user_bank_items_path(current_user) } Bank
+          %a.nav-link {href: user_bank_items_path(current_user) } Bank
         %li.nav-item
-          %a.nav-link{:href => user_payment_schedule_path(current_user) } Targets &amp; Values
+          %a.nav-link {href: user_payment_schedule_path(current_user) } Targets &amp; Values
       -elsif current_user.role == 'parent'
         %li.nav-item
-          %a.nav-link{:href => users_path } Profiles
-        %li.nav-item
-          %a.nav-link{ href: jobs_path } Dashboard
+          %a.nav-link{ href: users_path } Summary
+
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle#navDropdownMoney{ href: '#', data: { toggle: 'dropdown' }} Money
+          .dropdown-menu{ 'aria-labelledBy': 'navDropdownMoney'}
+            - User.children.ordered.each do |child|
+              = link_to "#{child.name} (#{number_to_currency(child.balance.to_f / 100)})" , user_bank_items_path(child), class: 'dropdown-item'
+
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle#navDropdownJobs{ href: '#', data: { toggle: 'dropdown' }} Jobs
+          .dropdown-menu{ 'aria-labelledBy': 'navDropdownJobs'}
+            - User.children.ordered.each do |child|
+              = link_to child.name, user_jobs_path(child), class: 'dropdown-item'
+
     %a.btn.btn-info{ href: destroy_user_session_path } Sign out

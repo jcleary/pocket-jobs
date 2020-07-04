@@ -5,7 +5,7 @@ class JobsController < ApplicationController
     if @user.present?
       @child = User.children.find(params[:user_id])   
     else 
-      @children = User.children
+      @children = User.children.ordered
     end
   end
 
