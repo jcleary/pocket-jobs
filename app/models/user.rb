@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :timeoutable
 
   scope :children, -> { where(role: 'child') }
+  scope :ordered, -> { order(:position) }
 
   has_many :jobs
   has_many :bank_items, -> { order(created_at: :desc) }
