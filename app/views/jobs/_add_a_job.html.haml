@@ -1,8 +1,26 @@
 .list-group-item
-  - @job = Job.new
-  = form_for(@job) do |f|
-    .input-group
-      = f.collection_select :job_type_id, JobType.standard.order(:points), :id, :name_with_points, { prompt: 'Select a job...' }, { class: 'custom-select' }
-      = f.hidden_field :user_id, value: child.id
-      .input-group-append
-        %button.btn.btn-primary{ type: "submit", data: { disable_with: 'Adding...' } }Add 
+  - if params[:custom] == 'true'
+    = form_for(@job) do |f|
+      .form-row
+        = f.fields_for :job_type  do |ff|
+          .col-7
+            = ff.label :name, value: 'Job name'
+            = ff.text_field :name, class: 'form-control'
+          .col-2
+            = ff.label :points
+            = ff.text_field :points, class: 'form-control'
+            = ff.hidden_field :custom, value: true
+        = f.hidden_field :user_id, value: child.id
+        .col-3.d-flex.align-items-end
+          %button.btn.btn-primary.btn-block{ type: "submit", data: { disable_with: '...' } }Add
+      .text-right.mt-2
+        =link_to 'Use standard job list', user_jobs_path(child)
+  - else
+    = form_for(@job) do |f|
+      .input-group
+        = f.collection_select :job_type_id, JobType.standard.order(:points), :id, :name_with_points, { prompt: 'Select a job...' }, { class: 'custom-select' }
+        = f.hidden_field :user_id, value: child.id
+        .input-group-append
+          %button.btn.btn-primary{ type: "submit", data: { disable_with: 'Adding...' } }Add
+      .text-right.mt-2
+        =link_to 'Add a custom job', user_jobs_path(child, custom: true)

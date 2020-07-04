@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       resources :users, only: :index do
         resource :paydays, only: :create
         resources :jobs, only: :index
-        resources :bank_items, only: [ :index, :new, :create ]
+        resources :bank_items, only: %i[index new create]
         get 'payment_schedule', to: 'payment_schedule#show'
       end
     end
