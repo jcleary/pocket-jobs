@@ -2,7 +2,7 @@
   - @job = Job.new
   = form_for(@job) do |f|
     .input-group
-      = f.collection_select :job_type_id, JobType.all.order(:points), :id, :name_with_points, { prompt: 'Select a job...' }, { class: 'custom-select' } 
+      = f.collection_select :job_type_id, JobType.standard.order(:points), :id, :name_with_points, { prompt: 'Select a job...' }, { class: 'custom-select' }
       = f.hidden_field :user_id, value: child.id
       .input-group-append
         %button.btn.btn-primary{ type: "submit", data: { disable_with: 'Adding...' } }Add 
