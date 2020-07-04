@@ -10,7 +10,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'haml', '~> 5.1', '>= 5.1.1'
-gem 'devise', '~> 4.2'
+gem 'devise', '~> 4.7'
 gem 'kaminari'
 gem "serviceworker-rails"
 
