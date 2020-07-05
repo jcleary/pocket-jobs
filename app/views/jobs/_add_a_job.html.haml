@@ -3,7 +3,7 @@
     %div
     = form_for(@job) do |f|
       .input-group
-        = f.label :job_type_id, 'Try one of these recently added custom job types:'
+        = f.label :job_type_id, 'Try a recently added custom job'
       .input-group
         = f.collection_select :job_type_id, @custom_job_types, :id, :name_with_points, { prompt: 'Select a job...' }, { class: 'custom-select' }
         = f.hidden_field :user_id, value: child.id
@@ -26,7 +26,7 @@
         .col-3.d-flex.align-items-end
           %button.btn.btn-primary.btn-block{ type: "submit", data: { disable_with: '...' } }Add
       .text-right.mt-2
-        =link_to 'Use standard job list', user_jobs_path(child)
+        =link_to 'Use standard job list', custom: nil
   - else
     = form_for(@job) do |f|
       .input-group
