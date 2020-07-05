@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'root#show' 
+  root 'root#show'
 
   devise_scope :user do
     authenticate :user do
-      resources :jobs, only: [ :index, :create ]
-      resources :users, only: :index do
+      resources :jobs, only: %i[index create]
+      resources :users, only: %i[index show] do
         resource :paydays, only: :create
         resources :jobs, only: :index
         resources :bank_items, only: %i[index new create]

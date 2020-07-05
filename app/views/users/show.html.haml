@@ -1,0 +1,22 @@
+.container.mt-3
+  .row
+    .col-md-6.offset-md-3
+      .card.shadow-sm
+        .card-header
+          %h4.my-0.font-weight-normal Money
+        .card-body.px-2
+          %canvas#money-chart
+          :javascript
+            var ctx = $('#money-chart');
+            $(document).ready( function() {
+              moneyOverTime = new Chart(ctx, {
+                type: 'line',
+                data: {
+                  labels: #{ @money_data.sort.to_h.keys.to_json.html_safe },
+                  datasets: [{
+                    data: #{ @money_data.values.to_json.html_safe },
+                    }]
+                }
+              });
+            });
+
