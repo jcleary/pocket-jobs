@@ -62,4 +62,14 @@ class User < ApplicationRecord
     end
     amount
   end
+
+  def send_sms(message)
+    sns_client.publish(phone_number: phone_number, message: message)
+  end
+
+  private
+
+  def sns_client
+    @sns_client ||= Aws::SNS::Client.new
+  end
 end
