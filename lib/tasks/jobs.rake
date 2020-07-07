@@ -1,10 +1,10 @@
 namespace :jobs do
   desc 'Payday - bank all jobs'
-  task :bank_points do
+  task bank_points: :environment do
     User.children.each(&:bank_points)
   end
 
-  task :nudge do
+  task nudge: :environment do
     User.children.each do |child|
       recent_jobs = child.jobs.includes(:job_type).where('created_at >= ?', 7.days.ago.beginning_of_day)
       recent_job_points = recent_jobs.inject(0) { |sum, job| sum + job.job_type.points }
