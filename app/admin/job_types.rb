@@ -14,7 +14,6 @@ ActiveAdmin.register JobType do
       row :custom
       row :last_used
     end
-    active_admin_comments
   end
 
   index do

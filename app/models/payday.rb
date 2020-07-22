@@ -2,7 +2,7 @@ class Payday < ApplicationRecord
   include ActionView::Helpers::NumberHelper
 
   belongs_to :user
-  belongs_to :bank_item, optional: true, dependent: :destroy
+  belongs_to :bank_item, optional: true
   has_many :jobs
 
   before_destroy :unlink_jobs
@@ -19,6 +19,5 @@ class Payday < ApplicationRecord
 
   def unlink_jobs
     jobs.update_all(payday_id: nil)
-
   end
 end

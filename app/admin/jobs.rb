@@ -3,13 +3,14 @@ ActiveAdmin.register Job do
 
   config.sort_order = 'created_at_desc'
 
-  filter :user, collection: proc { User.children }
+  filter :user, collection: proc { User.children.ordered }
+  filter :created_at
+  filter :description
 
   filter :job_type
   filter :created_at
 
   index do
-    id_column
     column :job_type
     column :payday
     column :created_at
