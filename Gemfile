@@ -24,6 +24,7 @@ gem 'cancancan'
 gem 'aws-sdk-sns'
 
 gem 'activeadmin'
+gem 'active_admin_theme'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
