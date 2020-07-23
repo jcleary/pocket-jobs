@@ -3,6 +3,8 @@ ActiveAdmin.register Job do
 
   config.sort_order = 'created_at_desc'
 
+  actions :index, :show, :destroy
+
   filter :user, collection: proc { User.children.ordered }
   filter :created_at
   filter :description

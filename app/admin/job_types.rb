@@ -1,11 +1,13 @@
 ActiveAdmin.register JobType do
   menu priority: 5
 
+  config.filters = false
+
   scope :all, default: true
   scope :standard
   scope :custom
 
-  config.filters = false
+  permit_params [:name, :points, :custom]
 
   show do
     attributes_table do
