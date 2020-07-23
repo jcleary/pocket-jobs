@@ -14,6 +14,7 @@ ActiveAdmin.register Job do
 
   index do
     column :job_type
+    column :user
     column :payday
     column :created_at
     actions
